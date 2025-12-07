@@ -1,0 +1,44 @@
+DESCRIPTIONS DES CAPTURES D'ÉCRAN POUR L'APP STORE
+===================================================
+
+Capture 1 : Bienvenue/Onboarding
+- Nom du fichier : 01_bienvenue.png
+- Légende : "Bienvenue sur Handla"
+- Montre : Écran de sélection de langue avec 6 options de langue
+- Texte marketing superposé : "Choisissez Votre Langue"
+
+Capture 2 : Écran d'Accueil
+- Nom du fichier : 02_accueil.png
+- Légende : "Votre Hub Personnel de Courses"
+- Montre : Écran d'accueil avec salutation personnalisée, carte de statistiques et sections d'ajout rapide
+- Texte marketing superposé : "Bonjour, [Nom] ! Prêt à Faire les Courses ?"
+
+Capture 3 : Liste de Courses
+- Nom du fichier : 03_liste.png
+- Légende : "Belle Liste de Courses"
+- Montre : Écran de liste avec plusieurs articles, onglets de filtre (Tous/À Acheter/Achetés)
+- Texte marketing superposé : "Organisez Facilement"
+
+Capture 4 : Ajouter un Article
+- Nom du fichier : 04_ajouter.png
+- Légende : "Ajoutez des Articles en Secondes"
+- Montre : Modal d'ajout d'article avec nom, quantité, unité et sélecteurs de catégorie
+- Texte marketing superposé : "Rapide & Simple"
+
+Capture 5 : Actions de Balayage
+- Nom du fichier : 05_balayer.png
+- Légende : "Balayez pour Modifier ou Supprimer"
+- Montre : Ligne d'article balayée vers la gauche révélant les boutons modifier et supprimer
+- Texte marketing superposé : "Gestes Intuitifs"
+
+Capture 6 : Célébration
+- Nom du fichier : 06_celebration.png
+- Légende : "Célébrez Votre Succès"
+- Montre : Superposition de célébration avec confettis quand tous les articles sont marqués comme achetés
+- Texte marketing superposé : "Tout est Fait ! C'est la Fête !"
+
+Capture 7 : Mode Sombre
+- Nom du fichier : 07_mode_sombre.png
+- Légende : "Magnifique Mode Sombre"
+- Montre : Écran de liste en mode sombre
+- Texte marketing superposé : "Doux pour les Yeux"

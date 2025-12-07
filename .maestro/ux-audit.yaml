@@ -1,0 +1,135 @@
+appId: host.exp.Exponent
+---
+# UX Audit Flow
+# Comprehensive UX testing for the Handla app
+
+- launchApp
+
+# === ONBOARDING UX ===
+- assertVisible: "Select your language"
+
+# Test all language options are visible (scroll if needed)
+- assertVisible: "English"
+- assertVisible: "Nederlands"
+- scroll:
+    direction: DOWN
+- assertVisible: "Svenska"
+- assertVisible: "Français"
+
+# Select English and continue
+- scroll:
+    direction: UP
+- tapOn: "English"
+
+# Name screen
+- assertVisible: "What's your name?"
+- tapOn:
+    id: "name-input"
+- inputText: "UX Tester"
+- tapOn: "Let's go!"
+
+# === HOME SCREEN UX ===
+- assertVisible: "Hello"
+
+# Verify stats card is visible
+- assertVisible: "left"  # "X items left" or similar
+
+# Test pull to refresh
+- scroll:
+    direction: DOWN
+- scroll:
+    direction: UP
+
+# === LIST SCREEN UX ===
+- tapOn: "List"
+- assertVisible: "Shopping List"
+
+# Add multiple items for testing
+- tapOn:
+    id: "add-item-fab"
+- inputText: "Apples"
+- tapOn: "Add Item"
+
+- tapOn:
+    id: "add-item-fab"
+- inputText: "Bread"
+- tapOn: "Add Item"
+
+- tapOn:
+    id: "add-item-fab"
+- inputText: "Cheese"
+- tapOn: "Add Item"
+
+# Test search
+- tapOn:
+    id: "search-input"
+- inputText: "Bread"
+- assertVisible: "Bread"
+- assertNotVisible: "Apples"
+- clearText
+- hideKeyboard
+
+# Test sorting
+- tapOn:
+    id: "sort-picker"
+- tapOn: "Name"
+
+# Test filters
+- tapOn: "To Buy"
+- tapOn: "Bought"
+- tapOn: "All"
+
+# Test swipe to delete (if supported)
+- swipe:
+    direction: LEFT
+    from:
+      text: "Apples"
+
+# Verify undo toast appears
+- assertVisible: "Undo"
+- tapOn: "Undo"
+
+# Verify item is restored
+- assertVisible: "Apples"
+
+# === MARK ALL COMPLETE ===
+# Mark all items as bought to trigger celebration
+- tapOn:
+    text: "Apples"
+    id: "item-checkbox"
+- tapOn:
+    text: "Bread"
+    id: "item-checkbox"
+- tapOn:
+    text: "Cheese"
+    id: "item-checkbox"
+
+# Verify celebration appears (if all done)
+- runFlow:
+    when:
+      visible: "All done"
+    commands:
+      - assertVisible: "🎉"
+      - tapOn:
+          text: "All done"
+
+# === SETTINGS UX ===
+- tapOn: "Settings"
+
+# Test dark mode
+- tapOn: "Theme"
+- tapOn: "Dark"
+- wait: 500
+
+# Verify UI responds
+- assertVisible: "Settings"
+
+# Switch back to light
+- tapOn: "Theme"
+- tapOn: "Light"
+
+# === FINAL CHECK ===
+- tapOn: "Home"
+- assertVisible: "Hello"
+
+- takeScreenshot: "ux-audit-complete"

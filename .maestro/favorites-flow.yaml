@@ -1,0 +1,30 @@
+appId: host.exp.Exponent
+---
+# Favorites Flow Test
+# Tests the favorites functionality
+
+- launchApp:
+    clearState: false
+
+# Navigate to Favorites tab
+- tapOn: "Favorites"
+
+# Check favorites screen
+- assertVisible: "Favorites"
+
+# If empty state
+- runFlow:
+    when:
+      visible: "No favorites yet"
+    commands:
+      - assertVisible: "Items marked as favorite will appear here"
+
+# If favorites exist, test selection
+- runFlow:
+    when:
+      notVisible: "No favorites yet"
+    commands:
+      - tapOn:
+          index: 0
+          id: "favorite-item"
+      - tapOn: "Add to list"

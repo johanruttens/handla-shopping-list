@@ -1,0 +1,39 @@
+appId: host.exp.Exponent
+---
+# Shopping Flow Test
+# Tests marking items as bought and the celebration animation
+
+- launchApp:
+    clearState: false
+
+# Navigate to List
+- tapOn: "List"
+
+# Check initial state
+- assertVisible: "Shopping List"
+
+# Toggle first item as bought
+- tapOn:
+    index: 0
+    id: "item-checkbox"
+
+# Verify item is marked
+- assertVisible: "Bought"
+
+# Use search functionality
+- tapOn:
+    id: "search-input"
+- inputText: "Milk"
+- assertVisible: "Milk"
+- clearText
+- hideKeyboard
+
+# Test sort functionality
+- tapOn:
+    id: "sort-picker"
+- tapOn: "Name"
+
+# Test filter tabs
+- tapOn: "To Buy"
+- tapOn: "Bought"
+- tapOn: "All"

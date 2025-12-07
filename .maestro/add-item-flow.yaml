@@ -1,0 +1,34 @@
+appId: host.exp.Exponent
+---
+# Add Item Flow Test
+# Tests adding a new item to the shopping list
+
+- launchApp:
+    clearState: false
+
+# Navigate to List tab
+- tapOn: "List"
+
+# Tap FAB to add item
+- tapOn:
+    id: "add-item-fab"
+
+# Fill in item details
+- assertVisible: "Add Item"
+- tapOn:
+    id: "item-name-input"
+- inputText: "Milk"
+
+# Select amount
+- tapOn: "+"
+- tapOn: "+"
+
+# Select category
+- tapOn: "Dairy"
+
+# Save item
+- tapOn: "Add Item"
+
+# Verify item appears in list
+- assertVisible: "Milk"
+- assertVisible: "3"

@@ -1,0 +1,44 @@
+SCREENSHOT-BESCHREIBUNGEN FÜR APP STORE
+=======================================
+
+Screenshot 1: Willkommen/Onboarding
+- Dateiname: 01_willkommen.png
+- Beschriftung: "Willkommen bei Handla"
+- Zeigt: Sprachauswahlbildschirm mit 6 Sprachoptionen
+- Marketing-Text-Overlay: "Wähle Deine Sprache"
+
+Screenshot 2: Startbildschirm
+- Dateiname: 02_start.png
+- Beschriftung: "Dein Persönlicher Einkaufs-Hub"
+- Zeigt: Startbildschirm mit persönlicher Begrüßung, Statistikkarte und Schnellzugriffsabschnitten
+- Marketing-Text-Overlay: "Hallo, [Name]! Bereit zum Einkaufen?"
+
+Screenshot 3: Einkaufsliste
+- Dateiname: 03_liste.png
+- Beschriftung: "Wunderschöne Einkaufsliste"
+- Zeigt: Listenbildschirm mit mehreren Artikeln, Filter-Tabs (Alle/Zu Kaufen/Gekauft)
+- Marketing-Text-Overlay: "Organisiere mit Leichtigkeit"
+
+Screenshot 4: Artikel Hinzufügen
+- Dateiname: 04_hinzufuegen.png
+- Beschriftung: "Füge Artikel in Sekunden Hinzu"
+- Zeigt: Artikel-Hinzufügen-Modal mit Name, Menge, Einheit und Kategorieauswahl
+- Marketing-Text-Overlay: "Schnell & Einfach"
+
+Screenshot 5: Wischgesten
+- Dateiname: 05_wischen.png
+- Beschriftung: "Wische zum Bearbeiten oder Löschen"
+- Zeigt: Artikelzeile nach links gewischt mit Bearbeiten- und Löschen-Buttons
+- Marketing-Text-Overlay: "Intuitive Gesten"
+
+Screenshot 6: Feier
+- Dateiname: 06_feier.png
+- Beschriftung: "Feiere Deinen Erfolg"
+- Zeigt: Konfetti-Feier-Overlay wenn alle Artikel als gekauft markiert sind
+- Marketing-Text-Overlay: "Alles Erledigt! Party-Zeit!"
+
+Screenshot 7: Dunkler Modus
+- Dateiname: 07_dunkler_modus.png
+- Beschriftung: "Wunderschöner Dunkler Modus"
+- Zeigt: Listenbildschirm im dunklen Modus
+- Marketing-Text-Overlay: "Angenehm für die Augen"

@@ -1,0 +1,57 @@
+SCREENSHOT DESCRIPTIONS FOR APP STORE
+=====================================
+
+Screenshot 1: Welcome/Onboarding
+- Filename: 01_welcome.png
+- Caption: "Welcome to Handla"
+- Shows: Language selection screen with 6 language options
+- Marketing text overlay: "Choose Your Language"
+
+Screenshot 2: Home Screen
+- Filename: 02_home.png
+- Caption: "Your Personal Shopping Hub"
+- Shows: Home screen with personalized greeting, stats card, and quick add sections
+- Marketing text overlay: "Hello, [Name]! Ready to Shop?"
+
+Screenshot 3: Shopping List
+- Filename: 03_list.png
+- Caption: "Beautiful Shopping List"
+- Shows: List screen with multiple items, filter tabs (All/To Buy/Bought)
+- Marketing text overlay: "Organize with Ease"
+
+Screenshot 4: Add Item
+- Filename: 04_add_item.png
+- Caption: "Add Items in Seconds"
+- Shows: Add item modal with name, amount, unit, and category pickers
+- Marketing text overlay: "Quick & Simple"
+
+Screenshot 5: Swipe Actions
+- Filename: 05_swipe.png
+- Caption: "Swipe to Edit or Delete"
+- Shows: Item row swiped left revealing edit and delete buttons
+- Marketing text overlay: "Intuitive Gestures"
+
+Screenshot 6: Celebration
+- Filename: 06_celebration.png
+- Caption: "Celebrate Your Success"
+- Shows: Confetti celebration overlay when all items are marked as bought
+- Marketing text overlay: "All Done! Party Time!"
+
+Screenshot 7: Dark Mode
+- Filename: 07_dark_mode.png
+- Caption: "Beautiful Dark Mode"
+- Shows: List screen in dark mode
+- Marketing text overlay: "Easy on the Eyes"
+
+=====================================
+RECOMMENDED SCREENSHOT DIMENSIONS:
+- iPhone 6.7": 1290 x 2796 pixels
+- iPhone 6.5": 1284 x 2778 pixels
+- iPhone 5.5": 1242 x 2208 pixels
+
+DESIGN NOTES:
+- Use warm coral (#FF6B6B) as accent color
+- White/light gray background for light mode shots
+- Clean, minimalist frame around device mockup
+- Marketing text should be large, readable, and positioned above or below the device
+- Consider using a subtle gradient or solid color background behind the device mockup

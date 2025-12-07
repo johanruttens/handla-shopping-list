@@ -1,0 +1,44 @@
+SKÄRMBILDSBESKRIVNINGAR FÖR APP STORE
+=====================================
+
+Skärmbild 1: Välkommen/Onboarding
+- Filnamn: 01_valkommen.png
+- Bildtext: "Välkommen till Handla"
+- Visar: Språkvalsskärm med 6 språkalternativ
+- Marknadsföringstext-överlägg: "Välj Ditt Språk"
+
+Skärmbild 2: Hemskärm
+- Filnamn: 02_hem.png
+- Bildtext: "Din Personliga Shoppinghubb"
+- Visar: Hemskärm med personlig hälsning, statistikkort och snabbtilläggssektioner
+- Marknadsföringstext-överlägg: "Hej, [Namn]! Redo att Handla?"
+
+Skärmbild 3: Inköpslista
+- Filnamn: 03_lista.png
+- Bildtext: "Vacker Inköpslista"
+- Visar: Listskärm med flera varor, filterflikar (Alla/Att Köpa/Köpta)
+- Marknadsföringstext-överlägg: "Organisera med Lätthet"
+
+Skärmbild 4: Lägg till Vara
+- Filnamn: 04_lagg_till.png
+- Bildtext: "Lägg till Varor på Sekunder"
+- Visar: Lägg till vara-modal med namn, mängd, enhet och kategoriväljare
+- Marknadsföringstext-överlägg: "Snabbt & Enkelt"
+
+Skärmbild 5: Svepåtgärder
+- Filnamn: 05_svep.png
+- Bildtext: "Svep för att Redigera eller Ta Bort"
+- Visar: Varurad svept åt vänster som visar redigera- och ta bort-knappar
+- Marknadsföringstext-överlägg: "Intuitiva Gester"
+
+Skärmbild 6: Firande
+- Filnamn: 06_firande.png
+- Bildtext: "Fira Din Framgång"
+- Visar: Konfettifirande-överlägg när alla varor är markerade som köpta
+- Marknadsföringstext-överlägg: "Allt Klart! Dags att Fira!"
+
+Skärmbild 7: Mörkt Läge
+- Filnamn: 07_morkt_lage.png
+- Bildtext: "Vackert Mörkt Läge"
+- Visar: Listskärm i mörkt läge
+- Marknadsföringstext-överlägg: "Behagligt för Ögonen"

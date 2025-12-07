@@ -1,0 +1,44 @@
+DESCRIPCIONES DE CAPTURAS DE PANTALLA PARA APP STORE
+=====================================================
+
+Captura 1: Bienvenida/Onboarding
+- Nombre de archivo: 01_bienvenida.png
+- Subtítulo: "Bienvenido a Handla"
+- Muestra: Pantalla de selección de idioma con 6 opciones de idioma
+- Texto de marketing superpuesto: "Elige Tu Idioma"
+
+Captura 2: Pantalla de Inicio
+- Nombre de archivo: 02_inicio.png
+- Subtítulo: "Tu Centro Personal de Compras"
+- Muestra: Pantalla de inicio con saludo personalizado, tarjeta de estadísticas y secciones de añadir rápido
+- Texto de marketing superpuesto: "¡Hola, [Nombre]! ¿Listo para Comprar?"
+
+Captura 3: Lista de Compras
+- Nombre de archivo: 03_lista.png
+- Subtítulo: "Hermosa Lista de Compras"
+- Muestra: Pantalla de lista con múltiples artículos, pestañas de filtro (Todos/Por Comprar/Comprados)
+- Texto de marketing superpuesto: "Organiza con Facilidad"
+
+Captura 4: Añadir Artículo
+- Nombre de archivo: 04_anadir.png
+- Subtítulo: "Añade Artículos en Segundos"
+- Muestra: Modal de añadir artículo con nombre, cantidad, unidad y selectores de categoría
+- Texto de marketing superpuesto: "Rápido y Simple"
+
+Captura 5: Acciones de Deslizamiento
+- Nombre de archivo: 05_deslizar.png
+- Subtítulo: "Desliza para Editar o Eliminar"
+- Muestra: Fila de artículo deslizada a la izquierda mostrando botones de editar y eliminar
+- Texto de marketing superpuesto: "Gestos Intuitivos"
+
+Captura 6: Celebración
+- Nombre de archivo: 06_celebracion.png
+- Subtítulo: "Celebra Tu Éxito"
+- Muestra: Superposición de celebración con confeti cuando todos los artículos están marcados como comprados
+- Texto de marketing superpuesto: "¡Todo Listo! ¡Hora de Fiesta!"
+
+Captura 7: Modo Oscuro
+- Nombre de archivo: 07_modo_oscuro.png
+- Subtítulo: "Hermoso Modo Oscuro"
+- Muestra: Pantalla de lista en modo oscuro
+- Texto de marketing superpuesto: "Fácil para los Ojos"

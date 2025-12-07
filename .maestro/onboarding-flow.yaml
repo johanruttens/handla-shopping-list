@@ -1,0 +1,21 @@
+appId: host.exp.Exponent
+---
+# Onboarding Flow Test
+# Tests the complete onboarding experience
+
+- launchApp
+
+# Language Selection Screen
+- assertVisible: "Select your language"
+- tapOn: "English"
+
+# Name Input Screen
+- assertVisible: "What's your name?"
+- tapOn:
+    id: "name-input"
+- inputText: "Test User"
+- tapOn: "Let's go!"
+
+# Should arrive at Home Screen
+- assertVisible: "Hello, Test User"
+- assertVisible: "Start Shopping"

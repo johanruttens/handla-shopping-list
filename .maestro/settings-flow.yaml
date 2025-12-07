@@ -1,0 +1,39 @@
+appId: host.exp.Exponent
+---
+# Settings Flow Test
+# Tests the settings screen functionality
+
+- launchApp:
+    clearState: false
+
+# Navigate to Settings tab
+- tapOn: "Settings"
+
+# Verify settings screen
+- assertVisible: "Settings"
+- assertVisible: "Name"
+- assertVisible: "Language"
+- assertVisible: "Theme"
+
+# Test name editing
+- tapOn:
+    text: "Test User"
+- inputText: "Updated Name"
+- tapOn: "Save"
+- assertVisible: "Updated Name"
+
+# Test language picker
+- tapOn: "Language"
+- assertVisible: "English"
+- tapOn: "Cancel"
+
+# Test theme picker
+- tapOn: "Theme"
+- assertVisible: "Light"
+- assertVisible: "Dark"
+- assertVisible: "System"
+- tapOn: "Cancel"
+
+# Verify version info
+- assertVisible: "Version"
+- assertVisible: "1.0.0"

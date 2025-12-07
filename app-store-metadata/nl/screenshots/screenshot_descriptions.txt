@@ -1,0 +1,44 @@
+SCREENSHOT BESCHRIJVINGEN VOOR APP STORE
+========================================
+
+Screenshot 1: Welkom/Onboarding
+- Bestandsnaam: 01_welkom.png
+- Bijschrift: "Welkom bij Handla"
+- Toont: Taalselectiescherm met 6 taalopties
+- Marketing tekst overlay: "Kies Je Taal"
+
+Screenshot 2: Startscherm
+- Bestandsnaam: 02_start.png
+- Bijschrift: "Jouw Persoonlijke Winkelhub"
+- Toont: Startscherm met persoonlijke begroeting, statistiekenkaart en snelle toevoeg-secties
+- Marketing tekst overlay: "Hallo, [Naam]! Klaar om te Winkelen?"
+
+Screenshot 3: Boodschappenlijst
+- Bestandsnaam: 03_lijst.png
+- Bijschrift: "Prachtige Boodschappenlijst"
+- Toont: Lijstscherm met meerdere artikelen, filtertabs (Alles/Te Kopen/Gekocht)
+- Marketing tekst overlay: "Organiseer met Gemak"
+
+Screenshot 4: Artikel Toevoegen
+- Bestandsnaam: 04_toevoegen.png
+- Bijschrift: "Voeg Artikelen Toe in Seconden"
+- Toont: Artikel toevoegen modal met naam, hoeveelheid, eenheid en categorie kiezers
+- Marketing tekst overlay: "Snel & Simpel"
+
+Screenshot 5: Veegacties
+- Bestandsnaam: 05_vegen.png
+- Bijschrift: "Veeg om te Bewerken of Verwijderen"
+- Toont: Artikelrij naar links geveegd met bewerkings- en verwijderknoppen
+- Marketing tekst overlay: "Intuïtieve Gebaren"
+
+Screenshot 6: Viering
+- Bestandsnaam: 06_viering.png
+- Bijschrift: "Vier Je Succes"
+- Toont: Confetti-viering overlay wanneer alle artikelen als gekocht zijn gemarkeerd
+- Marketing tekst overlay: "Alles Gedaan! Feesttijd!"
+
+Screenshot 7: Donkere Modus
+- Bestandsnaam: 07_donkere_modus.png
+- Bijschrift: "Prachtige Donkere Modus"
+- Toont: Lijstscherm in donkere modus
+- Marketing tekst overlay: "Prettig voor Je Ogen"
