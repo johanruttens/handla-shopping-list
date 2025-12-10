@@ -1,0 +1,28 @@
+<svg width="1024" height="1024" viewBox="0 0 1024 1024" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- White background -->
+  <rect width="1024" height="1024" fill="#FFFFFF"/>
+
+  <!-- Shopping bag outline -->
+  <path d="M280 340 L280 780 C280 810 304 834 334 834 L690 834 C720 834 744 810 744 780 L744 340 L280 340 Z"
+        stroke="#FF6B6B"
+        stroke-width="48"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        fill="none"/>
+
+  <!-- Bag handles -->
+  <path d="M380 340 L380 260 C380 187 439 128 512 128 C585 128 644 187 644 260 L644 340"
+        stroke="#FF6B6B"
+        stroke-width="48"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        fill="none"/>
+
+  <!-- Checkmark inside bag -->
+  <path d="M390 560 L470 640 L634 476"
+        stroke="#FF6B6B"
+        stroke-width="52"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        fill="none"/>
+</svg>

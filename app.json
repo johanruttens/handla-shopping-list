@@ -14,8 +14,13 @@
       "backgroundColor": "#ffffff"
     },
     "ios": {
-      "supportsTablet": true,
-      "bundleIdentifier": "com.handla.app"
+      "supportsTablet": false,
+      "bundleIdentifier": "com.handla.app",
+      "buildNumber": "14",
+      "infoPlist": {
+        "CFBundleAllowMixedLocalizations": true,
+        "ITSAppUsesNonExemptEncryption": false
+      }
     },
     "android": {
       "adaptiveIcon": {
@@ -36,6 +41,12 @@
     ],
     "experiments": {
       "typedRoutes": true
+    },
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "a9d8b6fe-3f11-4384-ad9c-ebc6d69fecc1"
+      }
     }
   }
 }
