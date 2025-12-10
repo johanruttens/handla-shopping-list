@@ -6,6 +6,7 @@ import { ThemeMode } from '../types';
 export const lightColors = {
   primary: '#FF6B6B', // Warm Coral
   primaryLight: '#FF8585',
+  primarySuggestion: '#1A252F',
   secondary: '#5856D6',
   background: '#FFFFFF',
   surface: '#F5F5F7',
@@ -25,6 +26,7 @@ export const lightColors = {
 export const darkColors = {
   primary: '#FF8585', // Lighter Coral for dark mode
   primaryLight: '#FF9999',
+  primarySuggestion: '#1A252F',
   secondary: '#5E5CE6',
   background: '#000000',
   surface: '#1C1C1E',

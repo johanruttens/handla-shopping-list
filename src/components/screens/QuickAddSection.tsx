@@ -49,12 +49,12 @@ function QuickAddChip({ name, onPress, variant = 'recent' }: QuickAddChipProps) 
           },
         ]}
       >
-        <Plus size={14} color={variant === 'suggestion' ? colors.primary : colors.textSecondary} />
+        <Plus size={14} color={variant === 'suggestion' ? colors.primarySuggestion : colors.textSecondary} />
         <Text
           style={[
             styles.chipText,
             {
-              color: variant === 'suggestion' ? colors.primary : colors.text,
+              color: variant === 'suggestion' ? colors.primarySuggestion : colors.text,
               fontSize: typography.sizes.sm,
               fontWeight: typography.weights.medium,
               marginLeft: spacing.xs,
