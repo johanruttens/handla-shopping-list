@@ -92,6 +92,8 @@ export default {
     editItem: 'Edit Item',
     deleteItem: 'Delete Item',
     deleteConfirm: 'Are you sure you want to delete this item?',
+    quantityUpdated: '%{name} - quantity updated to %{quantity}',
+    alreadyBoughtAddedNew: '%{name} added to list',
   },
   categories: {
     produce: 'Produce',
@@ -132,10 +134,12 @@ export default {
     empty: 'No favorites yet',
     emptyDescription: 'Items marked as favorite will appear here',
     addToList: 'Add to list',
-    addSelected: 'Add selected (%{count})',
-    selectItems: 'Select items to add',
+    addSelected: 'Add (%{count})',
+    selectItems: 'Select',
     removeFromFavorites: 'Remove from favorites',
     removeConfirm: 'Remove from favorites?',
+    removeSelected: 'Remove',
+    removeSelectedConfirm: 'Remove %{count} item(s) from favorites?',
   },
   settings: {
     title: 'Settings',

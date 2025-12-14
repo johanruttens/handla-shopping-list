@@ -9,10 +9,10 @@ import {
 import { router } from 'expo-router';
 import { Plus } from 'lucide-react-native';
 import { useTheme } from '../../src/theme/ThemeContext';
-import { Button, IconButton } from '../../src/components/common';
+import { Button, IconButton, Toast } from '../../src/components/common';
 import { GreetingHeader, StatsCard, QuickAddSection } from '../../src/components/screens';
 import { useAppStore } from '../../src/store/useAppStore';
-import { useShoppingStore } from '../../src/store/useShoppingStore';
+import { useShoppingStore, AddItemResult } from '../../src/store/useShoppingStore';
 import { ShoppingItem, Favorite } from '../../src/types';
 import { i18n } from '../../src/i18n';
 
@@ -33,9 +33,22 @@ export default function HomeScreen() {
   } = useShoppingStore();
   const [refreshing, setRefreshing] = useState(false);
   const [greetingRefresh, setGreetingRefresh] = useState(0);
+  const [toastMessage, setToastMessage] = useState('');
+  const [showToast, setShowToast] = useState(false);
 
   // Ensure i18n is synced
   i18n.locale = language;
+
+  const showToastForResult = useCallback((result: AddItemResult) => {
+    if (result.toastMessage) {
+      const message = i18n.t(result.toastMessage.message, {
+        name: result.item.name,
+        quantity: result.item.amount,
+      });
+      setToastMessage(message);
+      setShowToast(true);
+    }
+  }, []);
 
   useEffect(() => {
     loadStats();
@@ -46,23 +59,27 @@ export default function HomeScreen() {
   const handleAddRecentItem = useCallback(
     async (item: ShoppingItem | Favorite) => {
       const shoppingItem = item as ShoppingItem;
-      await addItem({
+      const result = await addItem({
         name: shoppingItem.name,
         amount: shoppingItem.amount,
         unit: shoppingItem.unit,
         category: shoppingItem.category,
         isFavorite: shoppingItem.isFavorite,
       });
+      showToastForResult(result);
     },
-    [addItem]
+    [addItem, showToastForResult]
   );
 
   const handleAddSuggestion = useCallback(
     async (item: ShoppingItem | Favorite) => {
       const favorite = item as Favorite;
-      await addFavoritesToList([favorite.id]);
+      const results = await addFavoritesToList([favorite.id]);
+      if (results.length > 0) {
+        showToastForResult(results[0]);
+      }
     },
-    [addFavoritesToList]
+    [addFavoritesToList, showToastForResult]
   );
 
   const onRefresh = useCallback(async () => {
@@ -150,6 +167,13 @@ export default function HomeScreen() {
           size="lg"
         />
       </View>
+
+      <Toast
+        message={toastMessage}
+        visible={showToast}
+        onDismiss={() => setShowToast(false)}
+        duration={3000}
+      />
     </SafeAreaView>
   );
 }

@@ -17,7 +17,10 @@ export function StatsCard({ toBuyCount, boughtToday }: StatsCardProps) {
     if (toBuyCount === 0) {
       return i18n.t('home.noItemsLeft');
     }
-    return i18n.t('home.itemsLeft', { count: toBuyCount });
+    if (toBuyCount === 1) {
+      return i18n.t('home.itemsLeft', { count: toBuyCount });
+    }
+    return i18n.t('home.itemsLeftPlural', { count: toBuyCount });
   };
 
   const getBoughtTodayText = () => {
@@ -61,6 +64,9 @@ export function StatsCard({ toBuyCount, boughtToday }: StatsCardProps) {
                   fontSize: typography.sizes.sm,
                 },
               ]}
+              numberOfLines={1}
+              adjustsFontSizeToFit
+              minimumFontScale={0.75}
             >
               {getItemsLeftText()}
             </Text>
@@ -111,6 +117,9 @@ export function StatsCard({ toBuyCount, boughtToday }: StatsCardProps) {
                   fontSize: typography.sizes.sm,
                 },
               ]}
+              numberOfLines={1}
+              adjustsFontSizeToFit
+              minimumFontScale={0.75}
             >
               {getBoughtTodayText()}
             </Text>
@@ -132,7 +141,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   iconContainer: {},
-  textContainer: {},
+  textContainer: {
+    flexShrink: 1,
+  },
   value: {},
   label: {},
   divider: {

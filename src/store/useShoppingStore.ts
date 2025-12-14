@@ -18,8 +18,9 @@ import {
   getAllFavorites,
   addOrUpdateFavorite,
   deleteFavorite,
-  addFavoritesToShoppingList,
   getShoppingStats,
+  getFavoriteById,
+  incrementFavoriteUsage,
 } from '../services/database';
 
 interface ShoppingStats {
@@ -33,6 +34,17 @@ interface DeletedItem {
   item: ShoppingItem;
   deletedAt: number;
 }
+
+export interface ToastMessage {
+  message: string;
+  type: 'info' | 'success' | 'warning';
+}
+
+export type AddItemResult = {
+  item: ShoppingItem;
+  action: 'added' | 'merged' | 'added_new_bought_exists';
+  toastMessage?: ToastMessage;
+};
 
 interface ShoppingState {
   // Data
@@ -60,7 +72,7 @@ interface ShoppingState {
   loadItems: () => Promise<void>;
   loadFavorites: () => Promise<void>;
   loadStats: () => Promise<void>;
-  addItem: (data: ShoppingItemFormData) => Promise<ShoppingItem>;
+  addItem: (data: ShoppingItemFormData) => Promise<AddItemResult>;
   editItem: (id: number, data: Partial<ShoppingItemFormData>) => Promise<void>;
   removeItem: (id: number) => Promise<void>;
   undoRemoveItem: () => Promise<void>;
@@ -74,7 +86,7 @@ interface ShoppingState {
     category: string;
   }) => Promise<Favorite>;
   removeFavorite: (id: number) => Promise<void>;
-  addFavoritesToList: (ids: number[]) => Promise<ShoppingItem[]>;
+  addFavoritesToList: (ids: number[]) => Promise<AddItemResult[]>;
   refreshAll: () => Promise<void>;
   dismissCelebration: () => void;
 }
@@ -209,7 +221,73 @@ export const useShoppingStore = create<ShoppingState>((set, get) => ({
     }
   },
 
-  addItem: async (data) => {
+  addItem: async (data): Promise<AddItemResult> => {
+    const { items } = get();
+
+    // Check for existing item with the same name (case-insensitive)
+    const existingItem = items.find(
+      (item) => item.name.toLowerCase() === data.name.toLowerCase()
+    );
+
+    if (existingItem) {
+      if (!existingItem.isBought) {
+        // CASE 1: Pending item exists - increment quantity
+        const newAmount = existingItem.amount + data.amount;
+        await updateShoppingItem(existingItem.id, { amount: newAmount });
+
+        const updatedItem = {
+          ...existingItem,
+          amount: newAmount,
+          updatedAt: new Date().toISOString()
+        };
+
+        set((state) => ({
+          items: state.items.map((item) =>
+            item.id === existingItem.id ? updatedItem : item
+          ),
+        }));
+
+        // If item was marked as favorite, reload favorites
+        if (data.isFavorite) {
+          await get().loadFavorites();
+        }
+
+        return {
+          item: updatedItem,
+          action: 'merged',
+          toastMessage: {
+            message: `item.quantityUpdated`,
+            type: 'info',
+          },
+        };
+      } else {
+        // CASE 2: Bought item exists - add as new item
+        const item = await addShoppingItem(data);
+        set((state) => ({
+          items: [item, ...state.items],
+          stats: {
+            ...state.stats,
+            totalItems: state.stats.totalItems + 1,
+            toBuyCount: state.stats.toBuyCount + 1,
+          },
+        }));
+
+        if (data.isFavorite) {
+          await get().loadFavorites();
+        }
+
+        return {
+          item,
+          action: 'added_new_bought_exists',
+          toastMessage: {
+            message: `item.alreadyBoughtAddedNew`,
+            type: 'info',
+          },
+        };
+      }
+    }
+
+    // CASE 3: No duplicate - add normally
     const item = await addShoppingItem(data);
     set((state) => ({
       items: [item, ...state.items],
@@ -219,11 +297,13 @@ export const useShoppingStore = create<ShoppingState>((set, get) => ({
         toBuyCount: state.stats.toBuyCount + 1,
       },
     }));
+
     // If item was marked as favorite, reload favorites to update the list
     if (data.isFavorite) {
       await get().loadFavorites();
     }
-    return item;
+
+    return { item, action: 'added' };
   },
 
   editItem: async (id, data) => {
@@ -376,19 +456,32 @@ export const useShoppingStore = create<ShoppingState>((set, get) => ({
     }));
   },
 
-  addFavoritesToList: async (ids) => {
-    const newItems = await addFavoritesToShoppingList(ids);
-    set((state) => ({
-      items: [...newItems, ...state.items],
-      stats: {
-        ...state.stats,
-        totalItems: state.stats.totalItems + newItems.length,
-        toBuyCount: state.stats.toBuyCount + newItems.length,
-      },
-    }));
+  addFavoritesToList: async (ids): Promise<AddItemResult[]> => {
+    const results: AddItemResult[] = [];
+    const { addItem } = get();
+
+    for (const id of ids) {
+      const favorite = await getFavoriteById(id);
+      if (favorite) {
+        // Increment usage count for the favorite
+        await incrementFavoriteUsage(id);
+
+        // Use addItem which handles duplicate detection
+        const result = await addItem({
+          name: favorite.name,
+          amount: favorite.defaultAmount,
+          unit: favorite.defaultUnit,
+          category: favorite.category,
+          isFavorite: true,
+        });
+
+        results.push(result);
+      }
+    }
+
     // Reload favorites to update usage counts
     await get().loadFavorites();
-    return newItems;
+    return results;
   },
 
   refreshAll: async () => {

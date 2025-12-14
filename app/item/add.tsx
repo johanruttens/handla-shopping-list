@@ -12,7 +12,7 @@ import { router } from 'expo-router';
 import { X } from 'lucide-react-native';
 import * as Haptics from 'expo-haptics';
 import { useTheme } from '../../src/theme/ThemeContext';
-import { Button, TextInput, IconButton } from '../../src/components/common';
+import { Button, TextInput, IconButton, Toast } from '../../src/components/common';
 import {
   AmountSelector,
   UnitPicker,
@@ -29,6 +29,8 @@ export default function AddItemScreen() {
   const language = useAppStore((state) => state.language);
   const addItem = useShoppingStore((state) => state.addItem);
   const [isLoading, setIsLoading] = useState(false);
+  const [toastMessage, setToastMessage] = useState('');
+  const [showToast, setShowToast] = useState(false);
 
   // Form state
   const [name, setName] = useState('');
@@ -56,9 +58,24 @@ export default function AddItemScreen() {
         category,
         isFavorite,
       };
-      await addItem(formData);
+      const result = await addItem(formData);
       Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
-      router.back();
+
+      // Show toast for duplicates, then navigate back
+      if (result.toastMessage) {
+        const message = i18n.t(result.toastMessage.message, {
+          name: result.item.name,
+          quantity: result.item.amount,
+        });
+        setToastMessage(message);
+        setShowToast(true);
+        // Delay navigation to show toast briefly
+        setTimeout(() => {
+          router.back();
+        }, 1500);
+      } else {
+        router.back();
+      }
     } catch (error) {
       console.error('Failed to add item:', error);
       Haptics.notificationAsync(Haptics.NotificationFeedbackType.Error);
@@ -182,6 +199,13 @@ export default function AddItemScreen() {
           />
         </View>
       </KeyboardAvoidingView>
+
+      <Toast
+        message={toastMessage}
+        visible={showToast}
+        onDismiss={() => setShowToast(false)}
+        duration={1500}
+      />
     </SafeAreaView>
   );
 }

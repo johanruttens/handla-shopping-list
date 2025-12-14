@@ -92,6 +92,8 @@ export default {
     editItem: 'Item bewerken',
     deleteItem: 'Item verwijderen',
     deleteConfirm: 'Weet je zeker dat je dit item wilt verwijderen?',
+    quantityUpdated: '%{name} - hoeveelheid gewijzigd naar %{quantity}',
+    alreadyBoughtAddedNew: '%{name} toegevoegd aan lijst',
   },
   categories: {
     produce: 'Groente & Fruit',
@@ -132,10 +134,12 @@ export default {
     empty: 'Nog geen favorieten',
     emptyDescription: 'Items gemarkeerd als favoriet verschijnen hier',
     addToList: 'Aan lijst toevoegen',
-    addSelected: 'Voeg geselecteerde toe (%{count})',
+    addSelected: 'Toevoegen (%{count})',
     selectItems: 'Selecteren',
     removeFromFavorites: 'Verwijderen uit favorieten',
     removeConfirm: 'Verwijderen uit favorieten?',
+    removeSelected: 'Verwijderen',
+    removeSelectedConfirm: '%{count} item(s) uit favorieten verwijderen?',
   },
   settings: {
     title: 'Instellingen',

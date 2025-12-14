@@ -92,6 +92,8 @@ export default {
     editItem: 'Redigera vara',
     deleteItem: 'Ta bort vara',
     deleteConfirm: 'Är du säker på att du vill ta bort denna vara?',
+    quantityUpdated: '%{name} - antal ändrat till %{quantity}',
+    alreadyBoughtAddedNew: '%{name} tillagd i listan',
   },
   categories: {
     produce: 'Frukt & Grönt',
@@ -132,10 +134,12 @@ export default {
     empty: 'Inga favoriter än',
     emptyDescription: 'Varor markerade som favoriter visas här',
     addToList: 'Lägg till i listan',
-    addSelected: 'Lägg till valda (%{count})',
-    selectItems: 'Välj varor att lägga till',
+    addSelected: 'Lägg till (%{count})',
+    selectItems: 'Välj',
     removeFromFavorites: 'Ta bort från favoriter',
     removeConfirm: 'Ta bort från favoriter?',
+    removeSelected: 'Ta bort',
+    removeSelectedConfirm: 'Ta bort %{count} vara(or) från favoriter?',
   },
   settings: {
     title: 'Inställningar',

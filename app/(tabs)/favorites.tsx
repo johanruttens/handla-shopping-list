@@ -10,9 +10,9 @@ import {
 import { Heart } from 'lucide-react-native';
 import * as Haptics from 'expo-haptics';
 import { useTheme } from '../../src/theme/ThemeContext';
-import { Button, EmptyState } from '../../src/components/common';
+import { Button, EmptyState, Toast } from '../../src/components/common';
 import { FavoriteItemRow } from '../../src/components/screens';
-import { useShoppingStore } from '../../src/store/useShoppingStore';
+import { useShoppingStore, AddItemResult } from '../../src/store/useShoppingStore';
 import { useAppStore } from '../../src/store/useAppStore';
 import { Favorite } from '../../src/types';
 import { i18n } from '../../src/i18n';
@@ -24,9 +24,28 @@ export default function FavoritesScreen() {
     useShoppingStore();
   const [selectedIds, setSelectedIds] = useState<number[]>([]);
   const [selectionMode, setSelectionMode] = useState(false);
+  const [toastMessage, setToastMessage] = useState('');
+  const [showToast, setShowToast] = useState(false);
 
   // Ensure i18n is synced
   i18n.locale = language;
+
+  const showToastForResults = useCallback((results: AddItemResult[]) => {
+    // Show toast for any merged or special cases
+    const specialResults = results.filter(r => r.toastMessage);
+    if (specialResults.length > 0) {
+      // Show the first special result
+      const result = specialResults[0];
+      if (result.toastMessage) {
+        const message = i18n.t(result.toastMessage.message, {
+          name: result.item.name,
+          quantity: result.item.amount,
+        });
+        setToastMessage(message);
+        setShowToast(true);
+      }
+    }
+  }, []);
 
   useEffect(() => {
     loadFavorites();
@@ -81,10 +100,38 @@ export default function FavoritesScreen() {
     if (selectedIds.length === 0) return;
 
     Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
-    await addFavoritesToList(selectedIds);
+    const results = await addFavoritesToList(selectedIds);
+    showToastForResults(results);
     setSelectedIds([]);
     setSelectionMode(false);
-  }, [selectedIds, addFavoritesToList]);
+  }, [selectedIds, addFavoritesToList, showToastForResults]);
+
+  const handleRemoveSelected = useCallback(() => {
+    if (selectedIds.length === 0) return;
+
+    Alert.alert(
+      i18n.t('favorites.removeSelected'),
+      i18n.t('favorites.removeSelectedConfirm', { count: selectedIds.length }),
+      [
+        {
+          text: i18n.t('common.cancel'),
+          style: 'cancel',
+        },
+        {
+          text: i18n.t('common.delete'),
+          style: 'destructive',
+          onPress: async () => {
+            Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
+            for (const id of selectedIds) {
+              await removeFavorite(id);
+            }
+            setSelectedIds([]);
+            setSelectionMode(false);
+          },
+        },
+      ]
+    );
+  }, [selectedIds, removeFavorite]);
 
   const renderItem = useCallback(
     ({ item }: { item: Favorite }) => (
@@ -168,14 +215,30 @@ export default function FavoritesScreen() {
             },
           ]}
         >
-          <Button
-            title={i18n.t('favorites.addSelected', { count: selectedIds.length })}
-            onPress={handleAddToList}
-            fullWidth
-            size="lg"
-          />
+          <View style={styles.footerButtons}>
+            <Button
+              title={i18n.t('favorites.removeSelected')}
+              onPress={handleRemoveSelected}
+              variant="secondary"
+              size="lg"
+              style={{ flex: 1, marginRight: spacing.sm }}
+            />
+            <Button
+              title={i18n.t('favorites.addSelected', { count: selectedIds.length })}
+              onPress={handleAddToList}
+              size="lg"
+              style={{ flex: 1, marginLeft: spacing.sm }}
+            />
+          </View>
         </View>
       )}
+
+      <Toast
+        message={toastMessage}
+        visible={showToast}
+        onDismiss={() => setShowToast(false)}
+        duration={3000}
+      />
     </SafeAreaView>
   );
 }
@@ -201,5 +264,9 @@ const styles = StyleSheet.create({
     right: 0,
     borderTopWidth: 1,
     paddingBottom: 34,
+  },
+  footerButtons: {
+    flexDirection: 'row',
+    alignItems: 'stretch',
   },
 });

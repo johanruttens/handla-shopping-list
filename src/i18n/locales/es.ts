@@ -92,6 +92,8 @@ export default {
     editItem: 'Editar artículo',
     deleteItem: 'Eliminar artículo',
     deleteConfirm: '¿Estás seguro de que quieres eliminar este artículo?',
+    quantityUpdated: '%{name} - cantidad actualizada a %{quantity}',
+    alreadyBoughtAddedNew: '%{name} añadido a la lista',
   },
   categories: {
     produce: 'Frutas y verduras',
@@ -132,10 +134,12 @@ export default {
     empty: 'Sin favoritos aún',
     emptyDescription: 'Los artículos marcados como favoritos aparecerán aquí',
     addToList: 'Añadir a la lista',
-    addSelected: 'Añadir seleccionados (%{count})',
-    selectItems: 'Selecciona artículos para añadir',
+    addSelected: 'Añadir (%{count})',
+    selectItems: 'Seleccionar',
     removeFromFavorites: 'Quitar de favoritos',
     removeConfirm: '¿Quitar de favoritos?',
+    removeSelected: 'Eliminar',
+    removeSelectedConfirm: '¿Eliminar %{count} artículo(s) de favoritos?',
   },
   settings: {
     title: 'Ajustes',

@@ -92,6 +92,8 @@ export default {
     editItem: 'Artikel bearbeiten',
     deleteItem: 'Artikel löschen',
     deleteConfirm: 'Bist du sicher, dass du diesen Artikel löschen möchtest?',
+    quantityUpdated: '%{name} - Menge auf %{quantity} geändert',
+    alreadyBoughtAddedNew: '%{name} zur Liste hinzugefügt',
   },
   categories: {
     produce: 'Obst & Gemüse',
@@ -132,10 +134,12 @@ export default {
     empty: 'Noch keine Favoriten',
     emptyDescription: 'Als Favorit markierte Artikel erscheinen hier',
     addToList: 'Zur Liste hinzufügen',
-    addSelected: 'Ausgewählte hinzufügen (%{count})',
-    selectItems: 'Artikel zum Hinzufügen auswählen',
+    addSelected: 'Hinzufügen (%{count})',
+    selectItems: 'Auswählen',
     removeFromFavorites: 'Aus Favoriten entfernen',
     removeConfirm: 'Aus Favoriten entfernen?',
+    removeSelected: 'Entfernen',
+    removeSelectedConfirm: '%{count} Artikel aus Favoriten entfernen?',
   },
   settings: {
     title: 'Einstellungen',
