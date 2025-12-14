@@ -1,0 +1,123 @@
+appId: com.handla.app
+---
+# App Preview Video Flow
+# Records a complete demo for the App Store
+# Duration target: ~20 seconds
+#
+# To record: maestro record .maestro/app-preview-video.yaml
+
+- launchApp:
+    clearState: true
+
+# === SCENE 1: Language Selection ===
+- extendedWaitUntil:
+    visible: "Select your language"
+    timeout: 10000
+
+- waitForAnimationToEnd
+- scroll:
+    direction: DOWN
+    duration: 500
+- scroll:
+    direction: UP
+    duration: 500
+- tapOn: "English"
+
+# === SCENE 2: Name Input ===
+- extendedWaitUntil:
+    visible: "What's your name?"
+    timeout: 5000
+
+- waitForAnimationToEnd
+- tapOn:
+    id: "name-input"
+- inputText: "Emma"
+- hideKeyboard
+- waitForAnimationToEnd
+- tapOn: "Let's go!"
+
+# === SCENE 3: Home Screen ===
+- extendedWaitUntil:
+    visible: "Hello"
+    timeout: 5000
+- waitForAnimationToEnd
+
+# Brief pause to show the home screen
+- wait: 1500
+
+# === SCENE 4: Navigate to List & Add Items ===
+- tapOn: "List"
+- waitForAnimationToEnd
+- wait: 800
+
+# Add first item - Milk
+- tapOn:
+    id: "add-item-fab"
+- extendedWaitUntil:
+    visible: "Add Item"
+    timeout: 3000
+- tapOn:
+    id: "item-name-input"
+- inputText: "Milk"
+- hideKeyboard
+- waitForAnimationToEnd
+- tapOn: "Add"
+- waitForAnimationToEnd
+- wait: 500
+
+# Add second item - Bread
+- tapOn:
+    id: "add-item-fab"
+- extendedWaitUntil:
+    visible: "Add Item"
+    timeout: 3000
+- tapOn:
+    id: "item-name-input"
+- inputText: "Bread"
+- hideKeyboard
+- waitForAnimationToEnd
+- tapOn: "Add"
+- waitForAnimationToEnd
+- wait: 500
+
+# Add third item - Apples
+- tapOn:
+    id: "add-item-fab"
+- extendedWaitUntil:
+    visible: "Add Item"
+    timeout: 3000
+- tapOn:
+    id: "item-name-input"
+- inputText: "Apples"
+- hideKeyboard
+- waitForAnimationToEnd
+# Increase amount
+- tapOn:
+    text: "+"
+- tapOn:
+    text: "+"
+- waitForAnimationToEnd
+- tapOn: "Add"
+- waitForAnimationToEnd
+
+# === SCENE 5: Show the list with items ===
+- wait: 1000
+
+# === SCENE 6: Check off items (triggers celebration) ===
+# Tap on each item row to mark as bought
+- tapOn: "Milk"
+- waitForAnimationToEnd
+- wait: 600
+
+- tapOn: "Bread"
+- waitForAnimationToEnd
+- wait: 600
+
+- tapOn: "Apples"
+- waitForAnimationToEnd
+
+# === SCENE 7: Celebration! ===
+# Wait for confetti animation
+- wait: 3000
+
+# End of video

@@ -1,0 +1,151 @@
+appId: com.handla.app
+---
+# Screenshot Flow for 6.7" Display (iPhone 15 Pro Max)
+# Takes screenshots at key moments for App Store
+#
+# To run: maestro test .maestro/screenshots-6.7.yaml
+# Screenshots saved to: ~/.maestro/screenshots/
+
+- launchApp:
+    clearState: true
+
+# === Screenshot 1: Language Selection ===
+- extendedWaitUntil:
+    visible: "Select your language"
+    timeout: 10000
+- waitForAnimationToEnd
+- takeScreenshot: "01_language_selection"
+
+# Select English and continue
+- tapOn: "English"
+
+# === Screenshot 2: Name Input ===
+- extendedWaitUntil:
+    visible: "What's your name?"
+    timeout: 5000
+- waitForAnimationToEnd
+- tapOn:
+    id: "name-input"
+- inputText: "Emma"
+- hideKeyboard
+- waitForAnimationToEnd
+- takeScreenshot: "02_name_input"
+
+- tapOn: "Let's go!"
+
+# === Screenshot 3: Home Screen (Empty) ===
+- extendedWaitUntil:
+    visible: "Hello"
+    timeout: 5000
+- waitForAnimationToEnd
+- takeScreenshot: "03_home_empty"
+
+# Navigate to List and add items
+- tapOn: "List"
+- waitForAnimationToEnd
+
+# Add items for a realistic list
+# Item 1 - Milk
+- tapOn:
+    id: "add-item-fab"
+- extendedWaitUntil:
+    visible: "Add Item"
+    timeout: 3000
+- waitForAnimationToEnd
+
+# === Screenshot 4: Add Item Modal ===
+- tapOn:
+    id: "item-name-input"
+- inputText: "Milk"
+- hideKeyboard
+- waitForAnimationToEnd
+- takeScreenshot: "04_add_item"
+
+- tapOn: "Add"
+- waitForAnimationToEnd
+
+# Item 2 - Bread
+- tapOn:
+    id: "add-item-fab"
+- extendedWaitUntil:
+    visible: "Add Item"
+    timeout: 3000
+- tapOn:
+    id: "item-name-input"
+- inputText: "Bread"
+- hideKeyboard
+- tapOn: "Add"
+- waitForAnimationToEnd
+
+# Item 3 - Apples
+- tapOn:
+    id: "add-item-fab"
+- extendedWaitUntil:
+    visible: "Add Item"
+    timeout: 3000
+- tapOn:
+    id: "item-name-input"
+- inputText: "Apples"
+- hideKeyboard
+- tapOn:
+    text: "+"
+- tapOn:
+    text: "+"
+- tapOn: "Add"
+- waitForAnimationToEnd
+
+# Item 4 - Cheese
+- tapOn:
+    id: "add-item-fab"
+- extendedWaitUntil:
+    visible: "Add Item"
+    timeout: 3000
+- tapOn:
+    id: "item-name-input"
+- inputText: "Cheese"
+- hideKeyboard
+- tapOn: "Add"
+- waitForAnimationToEnd
+
+# Item 5 - Eggs
+- tapOn:
+    id: "add-item-fab"
+- extendedWaitUntil:
+    visible: "Add Item"
+    timeout: 3000
+- tapOn:
+    id: "item-name-input"
+- inputText: "Eggs"
+- hideKeyboard
+- tapOn: "Add"
+- waitForAnimationToEnd
+
+# === Screenshot 5: Shopping List with Items ===
+- takeScreenshot: "05_shopping_list"
+
+# Mark some items as bought
+- tapOn: "Milk"
+- waitForAnimationToEnd
+- tapOn: "Bread"
+- waitForAnimationToEnd
+
+# === Screenshot 6: List with Some Bought Items ===
+- takeScreenshot: "06_list_partial_bought"
+
+# Mark remaining items to trigger celebration
+- tapOn: "Apples"
+- waitForAnimationToEnd
+- tapOn: "Cheese"
+- waitForAnimationToEnd
+- tapOn: "Eggs"
+- waitForAnimationToEnd
+
+# === Screenshot 7: Celebration ===
+- takeScreenshot: "07_celebration"
+
+# Navigate to Settings
+- tapOn: "Settings"
+- waitForAnimationToEnd
+
+# === Screenshot 8: Settings ===
+- takeScreenshot: "08_settings"
