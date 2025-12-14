@@ -106,6 +106,12 @@ export function AmountSelector({
     // Allow digits, decimal point, and comma (for European input)
     const sanitized = text.replace(/[^0-9.,]/g, '');
     setInputValue(sanitized);
+
+    // Immediately update parent with valid values so "Add" button works without blur
+    const parsed = parseFloat(sanitized.replace(',', '.'));
+    if (!isNaN(parsed) && parsed >= min && parsed <= max) {
+      onChange(Number(parsed.toFixed(1)));
+    }
   };
 
   return (
